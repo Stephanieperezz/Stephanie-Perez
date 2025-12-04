@@ -139,6 +139,7 @@ class Vistas:
         lbl_mostrar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+
     @staticmethod
     def cambiar_autos(ventana,tipo):
         Vistas.borrarPantalla(ventana)
@@ -202,6 +203,7 @@ class Vistas:
         btn_continuar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+
     @staticmethod
     def borrar_autos(ventana,tipo):
         Vistas.borrarPantalla(ventana)
@@ -287,7 +289,7 @@ class Vistas:
         txt_cerrada.pack(pady=10)
 
 
-        btn_guardar=Button(ventana,text="Guardar",justify="center",command=lambda:funciones.Controlador.agregar_camioneta(marca.get(),color.get(),modelo.get(),velocidad.get(),caballaje.get(),plazas.get(),traccion.get(),cerrada.get()))
+        btn_guardar=Button(ventana,text="Guardar",justify="center",command="")
         btn_guardar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
@@ -298,15 +300,6 @@ class Vistas:
         lbl_titulo=Label(ventana,text=f".::Mostrar camionetas::.")
         lbl_titulo.pack(pady=10)
 
-        i=""
-        registros=funciones.Controlador.mostrar_camionetas()
-        if len(registros)>0:
-            for fila in registros:
-                i=i+f"\n ID: {fila[0]}  Marca: {fila[1]}  Color: {fila[2]}  Modelo: {fila[3]} \n Velocidad: {fila[4]}  Caballaje: {fila[5]}  Plazas: {fila[6]}  Tracción: {fila[7]}  Cerrada: {fila[8]}"
-        else:
-            messagebox.showwarning(icon="warning",message=".::No hay camionetas registradas::.")
-        lbl_mostrar=Label(ventana,text=i,justify="center")
-        lbl_mostrar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
 
@@ -375,7 +368,7 @@ class Vistas:
                 txt_cerrada=Entry(ventana,textvariable=cerrada,justify="right",width=20)
                 txt_cerrada.pack(pady=10)
 
-                btn_guardar=Button(ventana,text="Guardar",justify="center",command=lambda:funciones.Controlador.actualizar_camioneta(id.get(),marca.get(),color.get(),modelo.get(),velocidad.get(),caballaje.get(),plazas.get(),traccion.get(),cerrada.get()))
+                btn_guardar=Button(ventana,text="Guardar",justify="center",command="")
                 btn_guardar.pack(pady=10)
                 btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
                 btn_volver.pack(pady=10)
@@ -385,6 +378,7 @@ class Vistas:
         btn_continuar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+
     @staticmethod
     def borrar_camionetas(ventana,tipo):
         Vistas.borrarPantalla(ventana)
@@ -402,7 +396,7 @@ class Vistas:
             if len(registros)>0:
                 lbl_confirm=Label(ventana,text="¿Seguro que deseas eliminar este registro?",justify="center")
                 lbl_confirm.pack(pady=10)
-                btn_confirm=Button(ventana,text="Confirmar",justify="center",command=lambda:funciones.Controlador.eliminar_camionetas(id.get()))
+                btn_confirm=Button(ventana,text="Confirmar",justify="center",command="")
                 btn_confirm.pack(pady=10)
                 btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
                 btn_volver.pack(pady=10)
@@ -413,6 +407,7 @@ class Vistas:
         btn_continuar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+        
     @staticmethod
     def insertar_camiones(ventana,tipo):
         Vistas.borrarPantalla(ventana)
@@ -469,27 +464,20 @@ class Vistas:
         txt_capacidadcarga.pack(pady=10)
 
 
-        btn_guardar=Button(ventana,text="Guardar",justify="center",command=lambda:funciones.Controlador.insertar_camion(marca.get(),color.get(),modelo.get(),velocidad.get(),caballaje.get(),plazas.get(),eje.get(),capacidadcarga.get()))
+        btn_guardar=Button(ventana,text="Guardar",justify="center",command="")
         btn_guardar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+
     @staticmethod
     def consultar_camiones(ventana,tipo):
         Vistas.borrarPantalla(ventana)
         lbl_titulo=Label(ventana,text=f".::Mostrar camionetas::.")
         lbl_titulo.pack(pady=10)
 
-        i=""
-        registros=funciones.Controlador.mostrar_camion()
-        if len(registros)>0:
-            for fila in registros:
-                i=i+f"\n ID: {fila[0]}  Marca: {fila[1]}  Color: {fila[2]}  Modelo: {fila[3]} \n Velocidad: {fila[4]}  Caballaje: {fila[5]}  Plazas: {fila[6]}  Eje: {fila[7]}  Capacidad de carga: {fila[8]}"
-        else:
-            messagebox.showwarning(icon="warning",message=".::No hay camiones registrados::.")
-        lbl_mostrar=Label(ventana,text=i,justify="center")
-        lbl_mostrar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+
     @staticmethod
     def cambiar_camiones(ventana,tipo):
         Vistas.borrarPantalla(ventana)
@@ -555,7 +543,7 @@ class Vistas:
                 txt_capacidadcarga=Entry(ventana,textvariable=capacidadcarga,justify="right",width=20)
                 txt_capacidadcarga.pack(pady=10)
 
-                btn_guardar=Button(ventana,text="Guardar",justify="center",command=lambda:funciones.Controlador.actualizar_camion(id.get(),marca.get(),color.get(),modelo.get(),velocidad.get(),caballaje.get(),plazas.get(),eje.get(),capacidadcarga.get()))
+                btn_guardar=Button(ventana,text="Guardar",justify="center",command="")
                 btn_guardar.pack(pady=10)
                 btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
                 btn_volver.pack(pady=10)
@@ -565,6 +553,7 @@ class Vistas:
         btn_continuar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
+
     @staticmethod
     def borrar_camiones(ventana,tipo):
         Vistas.borrarPantalla(ventana)
@@ -582,7 +571,7 @@ class Vistas:
             if len(registros)>0:
                 lbl_confirm=Label(ventana,text="¿Seguro que deseas eliminar este registro?",justify="center")
                 lbl_confirm.pack(pady=10)
-                btn_confirm=Button(ventana,text="Confirmar",justify="center",command=lambda:funciones.Controlador.eliminar_camion(id.get()))
+                btn_confirm=Button(ventana,text="Confirmar",justify="center",command="")
                 btn_confirm.pack(pady=10)
                 btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
                 btn_volver.pack(pady=10)
@@ -593,12 +582,3 @@ class Vistas:
         btn_continuar.pack(pady=10)
         btn_volver=Button(ventana,text="Volver",justify="center",command=lambda:Vistas.menu_acciones(ventana,tipo))
         btn_volver.pack(pady=10)
-
-
-
-
-
-
-
-
-
