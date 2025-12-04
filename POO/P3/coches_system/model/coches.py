@@ -25,24 +25,28 @@ class Coches:
           return False
       
     @staticmethod
-    def consultar_autos():
+    def insertar_camionetas(txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_traccion,txt_cerrada):
       try:
          cursor.execute(
-            "select * from autos"
+            "insert into camionetas values(null,%s,%s,%s,%s,%s,%s,%s,%s)",
+            (txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_traccion,txt_cerrada)
          )
-         return cursor.fetchall()
-      except:    
-         return []
+         conexion.commit()
+         return True
+      except:
+          return False
       
     @staticmethod
-    def consultar_autos_editar(txt_id):
+    def insertar_camiones(txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_eje,txt_capacidadcarga):
       try:
          cursor.execute(
-            "select * from autos where id=%s",(txt_id,)
+            "insert into camiones values(null,%s,%s,%s,%s,%s,%s,%s,%s)",
+            (txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_eje,txt_capacidadcarga)
          )
-         return cursor.fetchall()
-      except:    
-         return []
+         conexion.commit()
+         return True
+      except:
+          return False
       
     @staticmethod
     def actualizar_auto(txt_id,txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas):
@@ -50,6 +54,30 @@ class Coches:
          cursor.execute(
             "update autos set marca=%s,color=%s,modelo=%s,velocidad=%s,caballaje=%s,plazas=%s where id=%s",
             (txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_id)
+         )
+         conexion.commit()
+         return True
+       except: 
+         return False
+       
+    @staticmethod
+    def actualizar_camionetas(txt_id,txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_traccion,txt_cerrada):
+       try:
+         cursor.execute(
+            "update camionetas set marca=%s,color=%s,modelo=%s,velocidad=%s,caballaje=%s,plazas=%s,traccion=%s,cerrada=%s where id=%s",
+            (txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_traccion,txt_cerrada,txt_id)
+         )
+         conexion.commit()
+         return True
+       except: 
+         return False
+       
+    @staticmethod
+    def actualizar_camiones(txt_id,txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_eje,txt_capacidadcarga):
+       try:
+         cursor.execute(
+            "update camiones set marca=%s,color=%s,modelo=%s,velocidad=%s,caballaje=%s,plazas=%s,eje=%s,capacidadcarga=%s where id=%s",
+            (txt_marca,txt_color,txt_modelo,txt_velocidad,txt_caballaje,txt_plazas,txt_eje,txt_capacidadcarga,txt_id)
          )
          conexion.commit()
          return True
@@ -67,4 +95,90 @@ class Coches:
           return True  
         except:    
           return False
+        
+    @staticmethod
+    def borrar_camioneta(txt_id):
+        try:
+          cursor.execute(
+            "delete from camionetas where id=%s",
+            (txt_id,)
+          ) 
+          conexion.commit() 
+          return True  
+        except:    
+          return False
+        
+    @staticmethod
+    def borrar_camiones(txt_id):
+        try:
+          cursor.execute(
+            "delete from camiones where id=%s",
+            (txt_id,)
+          ) 
+          conexion.commit() 
+          return True  
+        except:    
+          return False
+        
+    @staticmethod
+    def consultar_autos():
+      try:
+         cursor.execute(
+            "select * from autos"
+         )
+         return cursor.fetchall()
+      except:    
+         return []
       
+    @staticmethod
+    def consultar_camionetas():
+      try:
+         cursor.execute(
+            "select * from camionetas"
+         )
+         return cursor.fetchall()
+      except:    
+         return []
+      
+    @staticmethod
+    def consultar_camiones():
+      try:
+         cursor.execute(
+            "select * from camiones"
+         )
+         return cursor.fetchall()
+      except:    
+         return []
+      
+    @staticmethod
+    def consultar_autos_editar(txt_id):
+      try:
+         cursor.execute(
+            "select * from autos where id=%s",(txt_id,)
+         )
+         return cursor.fetchall()
+      except:    
+         return []
+      
+    @staticmethod
+    def consultar_camionetas_editar(txt_id):
+      try:
+         cursor.execute(
+            "select * from camionetas where id=%s",(txt_id,)
+         )
+         return cursor.fetchall()
+      except:    
+         return []
+      
+    @staticmethod
+    def consultar_camiones_editar(txt_id):
+      try:
+         cursor.execute(
+            "select * from camiones where id=%s",(txt_id,)
+         )
+         return cursor.fetchall()
+      except:    
+         return []
+      
+       
+
